@@ -1,11 +1,13 @@
 import datetime
 
+from django.contrib.auth import get_user_model
 from django.db import transaction
 from django.db.models import QuerySet
 
-from db.models import Order, Ticket, User
+from db.models import Order, Ticket
 
 
+User = get_user_model()
 @transaction.atomic
 def create_order(
         tickets: list[dict],
